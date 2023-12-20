@@ -10,8 +10,12 @@ layout: page
                 <a href="#{{ category | first | cgi_escape }}" class="category-anchor">
                     <li>
                         {{ category | first }}
-                        <!-- {{ category | last | size | times: 100 | divided_by: site.tags.size | plus: 50 | divided_by: 100.0 }} -->
-                        <!-- <span class="category-number">{{ category | last | size }}</span> -->
+                        {% if site.tags.size > 0 %}
+                        {{ category | last | size | times: 100 | divided_by: site.tags.size | plus: 50 | divided_by: 100.0 }}
+                        {% else %}
+                        0
+                        {% endif %}
+                        <span class="category-number">{{ category | last | size }}</span>
                     </li>
                 </a>
             {% endfor %}
